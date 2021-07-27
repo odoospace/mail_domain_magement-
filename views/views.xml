@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="domain_to_restrict_form_view" model="ir.ui.view">
+            <field name="name">domain.to.restrict.form.view</field>
+            <field name="model">domain.to.restrict</field>
+            <field name="arch" type="xml">
+                <form string="Domain To Restrict">
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="domain_to_restrict_tree_view">
+            <field name="name">domain.to.restrict.tree.view</field>
+            <field name="model">domain.to.restrict</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="domain_restriction_form_view" model="ir.ui.view">
+            <field name="name">domain.restriction.form.view</field>
+            <field name="model">domain.restriction</field>
+            <field name="arch" type="xml">
+                <form string="Domain Restriction">
+                    <group col="4">
+                        <field name="name"/>
+                        <field name="active"/>
+                    </group>
+                    <notebook>
+                        <page name="domains" string="Domains">
+                            <group>
+                                <field name="domains_ids" nolabel="1"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="domain_restriction_tree_view">
+            <field name="name">domain.restriction.tree.view</field>
+            <field name="model">domain.restriction</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="active"/>
+                    <field name="domains_ids"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_window_domain_to_restrict">
+            <field name="name">Domains to Restrict</field>
+            <field name="res_model">domain.to.restrict</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_window_domain_restriction">
+            <field name="name">Domains Restriction</field>
+            <field name="res_model">domain.restriction</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Mail Domain Restriction" id="menu_mail_domain_management" parent="mail.menu_root_discuss"
+                  sequence="1" groups="mail_domain_management.group_mail_domain_management_manager"/>
+
+        <menuitem name="Domains to Restrict" id="menu_domain_to_restrict"
+                  parent="mail_domain_management.menu_mail_domain_management"
+                  action="action_window_domain_to_restrict" sequence="1"/>
+
+        <menuitem name="Domains Restriction" id="menu_domain_restriction"
+                  parent="mail_domain_management.menu_mail_domain_management"
+                  action="action_window_domain_restriction" sequence="2"/>
+
+    </data>
+</odoo>
