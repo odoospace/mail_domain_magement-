@@ -1,3 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_domain_to_restrict_administrator,mail_domain_management.domain.to.restrict,model_domain_to_restrict,mail_domain_management.group_mail_domain_management_manager,1,1,1,1
-access_domain_restrictionadministrator,mail_domain_management.domain.restriction,model_domain_restriction,mail_domain_management.group_mail_domain_management_manager,1,1,1,1
